@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    font-family: "Poppins", sans-serif;
+}
+form {
+    border-radius: 20px;
+    margin-top: 150px !important;
+    width: 30% !important;
+    background-color: white !important;
+    padding: 50px;
+}
+
+.btn-primary {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%); */
+}
+
+.form-control {
+    color: rgba(0, 0, 0, 0.87);
+    border-bottom-color: rgba(0, 0, 0, 0.42);
+    box-shadow: none !important;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+}
+h4 {
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+.form-label {
+    font-weight: 800 !important;
+}
+
+#registerHelp, #loginhelp{
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+    form {
+        width: 95% !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    form {
+        width: 95% !important;
+        padding-left: 30px;
+        padding-right: 30px;
+        margin:auto ;
+    }
+   
+    h4 {
+        font-size: 1rem !important;
+        font-weight: 700;
+    }
+    .form-label, .form-check-label, #loginHelp, #registerHelp {
+        font-size: 12px !important;
+        /* font-weight: 800 !important; */
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+    form {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1500px) {
+    form {
+        width: 40% !important;
+    }
+}
