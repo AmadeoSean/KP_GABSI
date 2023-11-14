@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelatih;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,14 @@ class PelatihController extends Controller
      */
 
    
-    public function listKejuaraan(){
-        return view('pelatih/daftar_kejuaraan');
+    // public function listKejuaraan(){
+    //     return view('pelatih/daftar_kejuaraan');
+    // }
+
+    public function listAtlet(){
+        $pelatih = Pelatih::where('user_id', Auth::user()->id)->get();
+        $data = $pelatih->atlets;
+        return view('daftar_atlet', compact('pelatih'));
     }
 
 
@@ -83,7 +90,17 @@ class PelatihController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pelatih = Pelatih::find($id);
+        $pelatih->nama = $request->get("nama_lengkap");
+        $pelatih->telp = $request->get("telp");
+        $pelatih->email = $request->get("email");
+        $pelatih->save();
+
+        $user_pelatih = User::find($pelatih->user_id);
+        $user_pelatih->email = $request->get("email");
+        $user_pelatih->save();
+        return redirect()->route('pelatih-profile')
+                ->with('status', 'Profile successfully updated');
     }
 
     /**

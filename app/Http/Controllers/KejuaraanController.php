@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kejuaraan;
 use Illuminate\Http\Request;
 
 class KejuaraanController extends Controller
@@ -14,6 +15,12 @@ class KejuaraanController extends Controller
     public function index()
     {
         //
+    }
+
+    public function listKejuaraan()
+    {
+        $data = Kejuaraan::all();
+        return view('daftar_kejuaraan', compact('data'));
     }
 
     /**

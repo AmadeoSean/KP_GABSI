@@ -57,12 +57,12 @@
                                 Daftar Atlet
                               </a>
                             </div>
-                            {{-- <div class="border border-dark border-top-0 border-opacity-25">
+                            <div class="border border-dark border-top-0 border-opacity-25">
                               <a class="nav-link {{ Route::is('atlet-daftar_kejuaraan')?'active':''}}" href={{ route('atlet-daftar_kejuaraan') }}>
                                   <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                   Daftar Kejuaraan
                               </a>  
-                            </div>   --}}
+                            </div>  
                             <div class="border border-dark border-top-0 border-opacity-25">
                               <a class="nav-link {{ Route::is('atlet-profile')?'active':''}}" href={{ route('atlet-profile') }}>
                                   <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

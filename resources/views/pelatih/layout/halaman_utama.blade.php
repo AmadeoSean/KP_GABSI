@@ -57,24 +57,24 @@
                                 Daftar Atlet
                               </a>
                             </div>
-                                {{-- <div class="border border-dark border-top-0 border-opacity-25">
+                            <div class="border border-dark border-top-0 border-opacity-25">
                                 <a class="nav-link {{ Route::is('pelatih-daftar_kejuaraan')?'active':''}}" href={{ route('pelatih-daftar_kejuaraan') }}>
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Daftar Kejuaraan
                                 </a>  
-                                </div>   --}}
-                            <div class="border border-dark border-top-0 border-opacity-25">
-                              <a class="nav-link {{ Route::is('pelatih-profile')?'active':''}}" href={{ route('pelatih-profile') }}>
-                                  <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                  Profile
-                              </a>  
                             </div>  
                             <div class="border border-dark border-top-0 border-opacity-25">
+                                <a class="nav-link {{ Route::is('pelatih-profile')?'active':''}}" href={{ route('pelatih-profile') }}>
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Profile
+                                </a>  
+                            </div>  
+                            {{-- <div class="border border-dark border-top-0 border-opacity-25">
                               <a class="nav-link" href={{ route('logout') }}>
                                   <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                   Logout
                               </a>  
-                            </div>  
+                            </div>   --}}
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

@@ -5,30 +5,32 @@
 @section('konten')
 <div class="page-content">
     ini halaman daftar kejuaraan
-  {{-- <table class="table">
+  
+  <table class="table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Pembeli</th>
-        <th>Kasir</th>
-        <th>Tanggal Transaction</th>
-        <th>Action</th>
+        <th>Nama</th>
+        <th>tanggal pelaksanaan</th>
+        <th>lokasi</th>
+        <th>keterangan</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       @foreach ($data as $item)
           <tr>
             <td>{{ $item->id }}</td>
-            <td>{{ $item->buyer->name }}</td>
-            <td>{{ $item->user->name }}</td>
-            <td>{{ $item->created_at }}</td>
-            <td><a class="btn btn-default" href="#basic" data-toggle="modal" 
-                onclick="getDetailData({{ $item->id }})">Lihat rincian pembelian </a>
-            </td>
+            <td>{{ $item->nama }}</td>
+            <td>{{ $item->tanggal_awal }}</td>
+            <td>{{ $item->lokasi}}</td>
+            <td>{{ $item->keterangan}}</td>
+           
           </tr>
       @endforeach
     </tbody>
-  </table> --}}
+  </table>
 </div>
 
 <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">

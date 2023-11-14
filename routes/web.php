@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\AtletController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KejuaraanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +27,8 @@ Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::post('/register',[AuthController::class,'register_user']);
 
 //admin
-Route::get('/', [AdminController::class, 'dashboardAdmin'])->name('dashboardAdmin')->middleware(['auth', 'role']);
-
+// Route::get('/', [AdminController::class, 'dashboardAdmin'])->name('dashboardAdmin')->middleware(['auth', 'role']);
+Route::resource('/', PelatihController::class)->middleware(['auth', 'role']);
 //pelatih
  
 // Route::get('/pelatih/halaman_utama')->middleware('auth')->name('pelatih');
@@ -38,9 +40,10 @@ Route::get('/', [AdminController::class, 'dashboardAdmin'])->name('dashboardAdmi
  
 
 Route::get('/pelatih/daftar_atlet', [AtletController::class, 'listAtlet'])->name('pelatih-daftar_atlet')->middleware('auth');
+Route::get('/pelatih/daftar_kejuaraan', [KejuaraanController::class, 'listKejuaraan'])->name('pelatih-daftar_kejuaraan')->middleware('auth');
 
 Route::get('/pelatih/profile', [PelatihController::class, 'profile'])->name('pelatih-profile')->middleware('auth');
-Route::post('/pelatih/profile', [PelatihController::class, 'updateProfile'])->name('pelatih-profile')->middleware('auth');
+// Route::post('/pelatih/profile', [PelatihController::class, 'updateProfile'])->name('pelatih-profile')->middleware('auth');
 Route::resource('pelatih', PelatihController::class)->middleware('auth');
  
 
@@ -49,9 +52,11 @@ Route::resource('pelatih', PelatihController::class)->middleware('auth');
 
  
 Route::get('/atlet/daftar_atlet', [AtletController::class, 'listAtlet'])->name('atlet-daftar_atlet')->middleware('auth');
+// Route::get('/atlet/data_pribadi', [AtletController::class, 'dataPribadi'])->name('atlet-data_pribadi')->middleware('auth');
+Route::get('/atlet/daftar_kejuaraan', [KejuaraanController::class, 'listKejuaraan'])->name('atlet-daftar_kejuaraan')->middleware('auth');
 
 Route::get('/atlet/profile', [AtletController::class, 'profile'])->name('atlet-profile')->middleware('auth');
-Route::post('/atlet/profile', [AtletController::class, 'updateProfile'])->name('atlet-profile')->middleware('auth');
+// Route::post('/atlet/profile', [AtletController::class, 'updateProfile'])->name('atlet-profile')->middleware('auth');
 Route::resource('atlet', AtletController::class)->middleware('auth');
 
 // Route::resource('category', CategoryController::class);
