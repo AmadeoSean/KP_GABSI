@@ -56,6 +56,9 @@ Route::get('/atlet/daftar_atlet', [AtletController::class, 'listAtlet'])->name('
 Route::get('/atlet/daftar_kejuaraan', [KejuaraanController::class, 'listKejuaraan'])->name('atlet-daftar_kejuaraan')->middleware('auth');
 
 Route::get('/atlet/profile', [AtletController::class, 'profile'])->name('atlet-profile')->middleware('auth');
+// Route::get('/atlet/profile', function(){
+//     return view('dataTable');
+// })->name('dataTable');
 // Route::post('/atlet/profile', [AtletController::class, 'updateProfile'])->name('atlet-profile')->middleware('auth');
 Route::resource('atlet', AtletController::class)->middleware('auth');
 

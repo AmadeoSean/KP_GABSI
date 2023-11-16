@@ -29,4 +29,15 @@ class Atlet extends Model
     public function user(){
         return $this->belongsTo('App\Models\User','user_id');
     }
+
+    public function kejuaraans() {
+        return $this->belongsToMany(Kejuaraan::class, 
+                    'atlet_kejuaraan',
+                    'atlet_id','kejuaraan_id')->withPivot('catatan');
+    }
+    public function latihans() {
+        return $this->belongsToMany(Latihan::class, 
+                    'atlet_jadwal_latihan',
+                    'atlet_id','jadwal_latihan_id')->withPivot('catatan');
+    }
 }

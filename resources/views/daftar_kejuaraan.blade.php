@@ -3,42 +3,75 @@
 
 
 @section('konten')
-<div class="page-content">
-    ini halaman daftar kejuaraan
-  
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nama</th>
-        <th>tanggal pelaksanaan</th>
-        <th>lokasi</th>
-        <th>keterangan</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($data as $item)
-          <tr>
-            <td>{{ $item->id }}</td>
-            <td>{{ $item->nama }}</td>
-            <td>{{ $item->tanggal_awal }}</td>
-            <td>{{ $item->lokasi}}</td>
-            <td>{{ $item->keterangan}}</td>
-           
-          </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
 
-<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
-  <div class="modal-dialog modal-wide">
-     <div class="modal-content" id="msg">
-       <!--loading animated gif can put here-->
-     </div>
-  </div>
-</div>
+
+@if(Auth::user()->role_id == 2)
+
+<table id="listKejuaraan" class="table table-striped table-bordered pt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>tanggal pelaksanaan</th>
+      <th>lokasi</th>
+      <th>keterangan</th>
+      <th>Aksi</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($data as $item)
+        <tr>
+          <td>{{ $item->id }}</td>
+          <td>{{ $item->nama }}</td>
+          <td>{{ $item->tanggal_awal }}</td>
+          <td>{{ $item->lokasi}}</td>
+          <td>{{ $item->keterangan}}</td>
+          <td><a href="#">lihat catatan</a></td>
+        </tr>
+    @endforeach
+  </tbody>
+</table>
+ 
+@elseif(Auth::user()->role_id == 3)
+ 
+
+<table id="listKejuaraan" class="table table-striped table-bordered pt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>tanggal pelaksanaan</th>
+      <th>lokasi</th>
+      <th>keterangan</th>
+      <th>Aksi</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($data as $item)
+        <tr>
+          <td>{{ $item->id }}</td>
+          <td>{{ $item->nama }}</td>
+          <td>{{ $item->tanggal_awal }}</td>
+          <td>{{ $item->lokasi}}</td>
+          <td>{{ $item->keterangan}}</td>
+          <td><a href="#">lihat catatan</a></td>
+        </tr>
+    @endforeach
+  </tbody>
+</table>
+
+@else
+@endif
 @endsection
+
+@section('javascript')
+<script>
+$(document).ready( function () {
+    $('#listKejuaraan').DataTable();
+} );
+</script>
+@endsection
+
 

@@ -16,4 +16,10 @@ class Kejuaraan extends Model
     public function catatans(){
         return $this->hasMany('App\Models\Catatan','id_kejuaraan','id');
     }
+
+    public function atlets() {
+        return $this->belongsToMany(Atlet::class, 
+                    'atlet_kejuaraan',
+                    'kejuaraan_id','atlet_id')->withPivot('catatan');
+    }
 }
