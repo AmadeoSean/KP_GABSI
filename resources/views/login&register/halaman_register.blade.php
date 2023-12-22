@@ -23,13 +23,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">username</label>
-                        <input type="password" class="form-control" name="passwordConfirmation" id="InputPasswordConfirm">
-                        @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div> --}}
+           
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="inputEmail" aria-describedby="emailHelp" value="{{old('email')}}" >
@@ -48,13 +42,13 @@
                         <div class="me-3">
                             <label for="exampleInputPassword1" class="form-label">Mendaftar Sebagai</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role_id" id="flexRadioDefault1" checked value="atlet">
+                                <input class="form-check-input" type="radio" name="role_id" id="flexRadioDefault1" checked value="3">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Atlet
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role_id" id="flexRadioDefault2" value="pelatih">
+                                <input class="form-check-input" type="radio" name="role_id" id="flexRadioDefault2" value="2">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Pelatih
                                 </label>

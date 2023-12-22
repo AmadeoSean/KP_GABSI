@@ -13,6 +13,12 @@
 <body class="bg-body-secondary">
     <div class="vh-100 d-flex justify-content-center align-items-center flex-column">
         <div class="container-fluid">
+            @if (session('message'))
+                <div class="alert alert-danger alert-dismissable fade show d-flex justify-content-between ms-auto me-auto mb-sm-0 mt-5" style="width: 480px;" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            @endif
             @if(Session::has('status') == 'failed')
                 <div class="alert alert-danger alert-dismissable fade show d-flex justify-content-between ms-auto me-auto mb-sm-0 mt-5" style="width: 480px;" role="alert">
                     {{ Session::get("message") }}
@@ -31,22 +37,27 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control  @error('email') is-invalid @enderror" name="email" id="inputEmail" aria-describedby="emailHelp" value="{{old('email')}}">
                     @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="Password" class="form-label">Kata Sandi</label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="inputPassword">
-                    @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    @error('password') 
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
-                    
                 </div>
+                
+                
                     <button type="submit" class="btn btn-primary mt-5">Login</button>
-                    <div class="form-text d-flex justify-content-center">
+                    <div class="form-text d-flex justify-content-between">
                         {{-- <div id="emailHelp" class="form-text mt-3 me-2"><a href="">Lupa Kata Sandi?</a></div> --}}
-                        <div id="loginHelp" class="form-text mt-3 me-2">Belum daftar?</div>
-                        <div id="loginHelp" class="form-text mt-3 "><a href="register">Daftar akun</a></div>
+                        <div id="loginHelp" class="form-text mt-3 me-2"><a href={{ route('register') }}>Belum punya akun?</a></div>
+                        <div id="loginHelp" class="form-text mt-3 "><a href={{ route('password.request') }}>Reset Password?</a></div>
                     </div>
             </form>
         </div>

@@ -17,7 +17,7 @@ class CreateAtletKejuaraanTable extends Migration
             $table->unsignedBigInteger('atlet_id')->nullable();
             $table->foreign('atlet_id')->references('id')->on('atlets');
             $table->unsignedBigInteger('kejuraan_id')->nullable();
-            $table->foreign('kejuraan_id')->references('id')->on('kejuaraans');    
+            $table->foreign('kejuaraan_id')->references('id')->on('kejuaraans');    
             $table->string('catatan',100);
         });
     }

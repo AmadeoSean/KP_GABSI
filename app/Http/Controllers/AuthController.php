@@ -99,4 +99,13 @@ class AuthController extends Controller
       Session::flash('message', 'registrasi berhasil');
       return redirect('login');
     }
+
+
+    public function resetPassword(){
+      return view('login&register/passwordReset/email_confirmation');
+    }
+
+    public function password_update(){
+      return view('login&register/passwordReset/change_password');
+    }
 }

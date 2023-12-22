@@ -4,9 +4,9 @@
 @section('konten')
 @if(Auth::user()->role_id == 2)
 @foreach ($pelatih as $item)
-<form action="{{ route('pelatih.update', $item->id) }}" method="POST">
+<form action="{{ url('/pelatih/profile/update/'.$item->id) }}" method="POST">
     @csrf
-    @method("PUT") 
+    {{-- @method("PUT")  --}}
     <div class="container rounded bg-white mt-1 mb-3">
         <div class="mt-5 mb-3">
             <h4 class="text-center">Profile Settings</h4>
@@ -24,6 +24,7 @@
                         <div class="col-md-12 mb-2"><label class="labels">Nama lengkap</label><input name="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" value={{ $item->nama }}></div>
                         <div class="col-md-12 mb-2"><label class="labels">nomor Telepon</label><input name="telp" type="text" class="form-control" placeholder="enter phone number" value={{ $item->telp }}></div>
                         <div class="col-md-12 mb-2"><label class="labels">Email</label><input name="email" type="text" class="form-control" placeholder="Email" value={{ $item->email }}></div>
+                        {{-- <div class="col-md-12 mb-2"><label class="labels">Password</label><input name="email" type="text" class="form-control" placeholder="Email" value={{ $item->user->password }}></div> --}}
                 </div> 
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
@@ -34,9 +35,9 @@
 
 @elseif(Auth::user()->role_id == 3)
 @foreach($atlet as $item) 
-<form action="{{ route('atlet.update', $item->id) }}" method="POST">
+<form action="{{ url('/atlet/profile/update/'.$item->id) }}" method="POST">
     @csrf
-    @method("PUT")
+    {{-- @method("PUT")b  --}}
     <div class="container rounded bg-white mt-1 mb-5">
         <div class="mt-5 mb-3">
             <h4 class="text-center">Profile Settings</h4>
@@ -47,49 +48,56 @@
                 <span class="text-black-50"><a href="#">Change Profile Picture</a></span>
             </div>
         </div>
-        <div class="">
+        <div >
                 <div class="row justify-content-center">
-                            <h3 class="col-md-8 mb-3">Data Pribadi</h3>
-                            <div class="col-md-8 mb-3"><label class="labels">Nama Lengkap</label><input name="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" value="{{$item->nama }}"></div>
-                            <div class="col-md-8 mb-3"><label class="labels">Nama Panggilan</label><input name="nama_panggilan" type="text" class="form-control" placeholder="Nama Panggilan" value="{{ $item->nama_panggilan}}"></div>
-                            
-                            <div class="col-md-4 me-1 mb-3"><label class="labels">Tempat lahir</label><input name="tempat_lahir" type="text" class="form-control" placeholder="Tanggal Lahir" value="{{ $item->tempat_lahir}}"></div>
-                            <div class="col-md-4 mb-3"><label class="labels">Tanggal lahir</label><input name="tanggal_lahir" type="date" class="form-control" placeholder="Tanggal Lahir" value="{{$item->tanggal_lahir}}"></div>
-                            <div class="col-md-8 mb-3"><label class="labels">Email</label><input name="email" type="text" class="form-control" placeholder="Email" value={{ $item->email }}></div>
-                            <div class="col-md-8 mb-3"><label class="labels">nomor Telepon</label><input name="telp" type="text" class="form-control" placeholder="enter phone number" value={{ $item->telp }}></div>
+                        <h3 class="col-md-12 col-sm-12 mb-3">Data Pribadi</h3>
+                        <div class="col-md-12 col-sm-12 mb-3"><label class="labels">Nama Lengkap</label><input name="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" value="{{$item->nama }}"></div>
+                        <div class="col-md-12 col-sm-12 mb-3"><label class="labels">Nama Panggilan</label><input name="nama_panggilan" type="text" class="form-control" placeholder="Nama Panggilan" value="{{ $item->nama_panggilan}}"></div>
+                        
+                        <div class="col-md-6 col-sm-6 mb-3"><label class="labels">Tempat lahir</label><input name="tempat_lahir" type="text" class="form-control" placeholder="Tanggal Lahir" value="{{ $item->tempat_lahir}}"></div>
+                        <div class="col-md-6 col-sm-6 mb-3"><label class="labels">Tanggal lahir</label><input name="tanggal_lahir" type="date" class="form-control" placeholder="Tanggal Lahir" value="{{$item->tanggal_lahir}}"></div>
+                        <div class="col-md-12 col-sm-12 mb-3"><label class="labels">Email</label><input name="email" type="text" class="form-control" placeholder="Email" value={{ $item->email }}></div>
+                        <div class="col-md-12 col-sm-12 mb-3"><label class="labels">Password</label><input name="email" type="text" class="form-control" placeholder="Email" value={{ $item->email }}></div>
+                        <div class="col-md-12 col-sm-12 mb-3"><label class="labels">nomor Telepon</label><input name="telp" type="text" class="form-control" placeholder="enter phone number" value={{ $item->telp }}></div>
                 </div> 
         </div>
-        <div class="text-center mb-5 mt-2"><button class="btn btn-primary profile-button w-50" type="submit">Save Update</button></div>
+        <div class="text-center mb-5 mt-2  "><button class="btn btn-primary profile-button w-100" type="submit">Save Update</button></div>
 
         <div class="">
             <div class="row justify-content-center">
-                        <h3 class="col-md-8 mb-3">Data Organisasi & Prestasi</h3>
-                        <div class="col-md-8 mb-3"><label class="labels">Cabang</label><input name="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" value="{{$item->gabsi->nama }}" disabled></div>
-                        <div class="col-md-8 mb-3"><label class="labels">Total Point</label><input name="nama_panggilan" type="text" class="form-control" placeholder="Nama Panggilan" value="{{ $item->total_point}}" disabled></div>
-                        <table class="table w-auto">
-                            <thead>
-                              <tr class="text-center">
-                                <th class="border border border-2 border-dark text-wrap" rowspan="2">Nomor Spesialis</th>
-                                <th class="border border border-2 border-dark" rowspan="2">Nama kejuraan</th> 
-                                <th class="border border border-2 border-dark" rowspan="2">peringkat</th>
-                                <th class="border border border-2 border-dark" rowspan="2">poin</th>
-                                <th class="border border border-2 border-dark" rowspan="2">keterangan</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              @foreach ($item->prestasis as $prestasi)
-                                  <tr>
-                                    <td class="border border border-2 border-dark">{{ $prestasi->nomor_spesialis }}</td>
-                                    <td class="border border border-2 border-dark">{{ $prestasi->kejuaraan->nama }}</td>
-                                    <td class="border border border-2 border-dark">{{ $prestasi->peringkat }}</td>
-                                    <td class="border border border-2 border-dark">{{ $prestasi->point }}</td>
-                                    <td class="border border border-2 border-dark">{{ $prestasi->keterangan }}</td>
-                                  </tr>
-                              @endforeach
-                            </tbody>
-                          </table>
+                        <h3 class="col-md-12 col-sm-12 mb-3 ">Data Organisasi & Prestasi</h3>
+                        <div class="col-md-12 col-sm-12 mb-3 "><label class="labels">Cabang</label><input name="nama_lengkap" type="text" class="form-control" placeholder="Nama Lengkap" value="{{!empty($item->gabsi)?$item->gabsi->nama:'' }}" disabled></div>
+                        <div class="col-md-12 col-sm-12 mb-3 "><label class="labels">Total Point</label><input name="nama_panggilan" type="text" class="form-control" placeholder="Nama Panggilan" value="{{ $item->total_point}}" disabled></div>
+                        <div class="col-md-12 col-sm-12 mt-3">
+                            <table id="listPrestasi" class="table table-striped table-bordered " style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nomor Spesialis</th>
+                                        <th>Nama kejuraan</th> 
+                                        <th>peringkat</th>
+                                        <th>poin</th>
+                                        <th>keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($item->prestasis as $prestasi)
+                                        <tr>
+                                            <td >{{ $prestasi->nomor_spesialis }}</td>
+                                            <td >{{ $prestasi->kejuaraan->nama }}</td>
+                                            <td >{{ $prestasi->peringkat }}</td>
+                                            <td >{{ $prestasi->point }}</td>
+                                            <td >{{ $prestasi->keterangan }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    
+                                </tfoot>
+                            </table>
+                        </div>
+            </div>       
         </div> 
-            {{-- <div class="text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div> --}}
+        {{-- <div class="text-center mb-5 mt-2  "><button class="btn btn-primary profile-button w-100" type="submit">Update Data Prestasi</button></div> --}}
         
     </div>
    
@@ -133,4 +141,66 @@
 
 </div>
 @endif
+@endsection
+
+@section('javascript')
+<script>
+$(document).ready( function () {
+    $('#listPrestasi').DataTable({
+        scrollX: true,  
+        responsive:true,
+        // dom: '<"toolbar w-25">frtip'
+    });
+    // document.querySelector('div.toolbar').innerHTML = '<button id="btnTambahData" class="btn btn-primary profile-button" type="submit">Tambah Data</button>';
+});
+
+
+</script>
+@endsection
+
+@section('style')
+<style>
+    /* .dataTables_filter{
+        float: right;
+    } */
+    .toolbar{
+        float: left;
+    }
+/* 
+    div.dataTables_wrapper {
+            width: 850px;
+            margin: 0 auto;
+        } */
+    @media only screen and (min-width:280px) and (max-width: 768px)  {
+        /* div.dataTables_info{
+            width: 200px;
+        
+           
+        }
+        div.dataTables_paginate{
+            width: 200px;
+           
+            position: relative;
+            left: 320px;
+            bottom: 40px;
+            margin-top: 10px;
+        } */
+        /* div.dataTables_filter{
+            width: 250px;
+            
+          
+        } */
+        /* #btnTambahData{
+            font-size: 14px; 
+            float: left;
+        } */
+    }
+    /* @media only screen and (max-width: 600px) {
+        div.dataTables_wrapper {
+            width: 850px;
+            margin: 0 auto;
+        }
+    } */
+    
+</style>
 @endsection

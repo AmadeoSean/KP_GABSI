@@ -20,7 +20,7 @@ class KejuaraanController extends Controller
     public function listKejuaraan()
     {
         $data = Kejuaraan::all();
-        return view('daftar_kejuaraan', compact('data'));
+        return view('kejuaraan/daftar_kejuaraan', compact('data'));
     }
 
     /**

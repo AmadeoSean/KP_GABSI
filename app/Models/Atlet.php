@@ -35,9 +35,13 @@ class Atlet extends Model
                     'atlet_kejuaraan',
                     'atlet_id','kejuaraan_id')->withPivot('catatan');
     }
-    public function latihans() {
-        return $this->belongsToMany(Latihan::class, 
-                    'atlet_jadwal_latihan',
-                    'atlet_id','jadwal_latihan_id')->withPivot('catatan');
+    
+
+    public function pasangans_atlet_1(){
+        return $this->hasOne('App\Models\Pasangan','id_atlet_1','id');
+    }
+
+    public function pasangans_atlet_2(){
+        return $this->hasOne('App\Models\Pasangan','id_atlet_2','id');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalLatihan;
+use App\Models\Latihan;
 use App\Models\Pelatih;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,21 +23,29 @@ class PelatihController extends Controller
     // }
 
     public function listAtlet(){
-        $pelatih = Pelatih::where('user_id', Auth::user()->id)->get();
-        $data = $pelatih->atlets;
-        return view('daftar_atlet', compact('pelatih'));
+        $this->authorize('pelatih');
+        $pelatih = Pelatih::find(Auth::user()->pelatih->id);
+        // dd($pelatih);
+        $data = $pelatih->atlets;      
+        
+        // dd($pelatih);
+        return view('atlet/daftar_atlet', compact('data'));
     }
 
 
     public function profile()
     {   
+        $this->authorize('pelatih');
         $pelatih = Pelatih::where('user_id', Auth::user()->id)->get();
         return view('profile', compact('pelatih'));
     }
     
     public function index()
     {
-        return view('dashboard');
+        $this->authorize('pelatih');
+        $data = JadwalLatihan::where('id_pelatih','=', Auth::user()->pelatih->id)->get();
+        // dd($data);
+        return view('dashboard', compact('data'));
     }
 
     /**
@@ -90,6 +100,7 @@ class PelatihController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('pelatih');
         $pelatih = Pelatih::find($id);
         $pelatih->nama = $request->get("nama_lengkap");
         $pelatih->telp = $request->get("telp");

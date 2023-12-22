@@ -15,7 +15,6 @@ class CreateJadwalLatihanTable extends Migration
     {
         Schema::create('jadwal_latihans', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->date('tanggal_latihan');
             $table->time('jam_latihan');
             $table->string('lokasi');
